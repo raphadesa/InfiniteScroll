@@ -24,8 +24,8 @@
         _action = RefreshUI;
     }
 
-     private void RefreshUI()
-    {        
+    private void RefreshUI()
+    {
         StateHasChanged();
     }
 
@@ -33,6 +33,8 @@
     public static void LoadMore(int pageNo)
     {
         var newsService = new NewsService();
+        if (pageNo == 1)
+            entries.Clear();
         entries.AddRange(newsService.getFeed(pageNo));
         _action.Invoke();
     }
